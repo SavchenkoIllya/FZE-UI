@@ -1,0 +1,32 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main  # или main, в зависимости от основной ветки
+  pull_request:
+    branches:
+      - main  # или main, в зависимости от основной ветки
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout репозиторий
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # 2. Установить Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22'
+
+      # 3. Установить зависимости
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Собрать проект
+      - name: Build project
+        run: npm run build
