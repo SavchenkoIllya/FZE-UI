@@ -10,6 +10,7 @@ on:
 
 # Добавляем расширенные права для GITHUB_TOKEN
 permissions:
+  id-token: write
   contents: read
   packages: write
 
