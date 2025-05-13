@@ -24,7 +24,7 @@ jobs:
           build_command: npm run build:all
       - uses: JS-DevTools/npm-publish@v3
         with:
-          token: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           registry: "https://registry.npmjs.org"
 
 
