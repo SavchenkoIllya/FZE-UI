@@ -18,38 +18,48 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout репозиторий
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # 2. Установить Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: bitovi/github-actions-react-to-ghp@v1.2.0
         with:
-          node-version: '22'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@SavchenkoIllya'
-
-      # 3. Кэширование node_modules для ускорения сборки
-      - name: Cache node modules
-        uses: actions/cache@v3
+          path: dist
+          build_command: npm run _build:all
+      - uses: JS-DevTools/npm-publish@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          token: ${{ secrets.NPM_TOKEN }}
+          registry: "https://registry.npmjs.org"
 
-      # 4. Установить зависимости
-      - name: Install dependencies
-        run: npm ci
 
-      # 5. Собрать проект
-      - name: Build project
-        run: npm run build
-
-      # 6. Публикация только при пуше в main
-      - name: Publish to GitHub Packages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      # 1. Checkout репозиторий
+#      - name: Checkout repository
+#        uses: actions/checkout@v4
+#
+#      # 2. Установить Node.js
+#      - name: Set up Node.js
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: '22'
+#          registry-url: 'https://npm.pkg.github.com'
+#          scope: '@SavchenkoIllya'
+#
+#      # 3. Кэширование node_modules для ускорения сборки
+#      - name: Cache node modules
+#        uses: actions/cache@v3
+#        with:
+#          path: node_modules
+#          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#          restore-keys: |
+#            ${{ runner.os }}-node-
+#
+#      # 4. Установить зависимости
+#      - name: Install dependencies
+#        run: npm ci
+#
+#      # 5. Собрать проект
+#      - name: Build project
+#        run: npm run _build
+#
+#      # 6. Публикация только при пуше в main
+#      - name: Publish to GitHub Packages
+#        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+#        run: npm publish
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
