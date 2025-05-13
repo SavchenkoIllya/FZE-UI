@@ -1,10 +1,17 @@
 {
-  "name": "fze-ui",
+  "name": "@SavchenkoIllya/fze-ui",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SavchenkoIllya/FZE-UI.git"
   },
   "peerDependencies": {
     "clsx": "^2.1.1",
