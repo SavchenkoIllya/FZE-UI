@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '22'
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@ваш-username'
+          scope: '@SavchenkoIllya'
 
       # 3. Установить зависимости
       - name: Install dependencies
