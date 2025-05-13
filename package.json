@@ -12,10 +12,10 @@
   "scripts": {
     "build:all": "npm run build & npm run build:browser & npm run typescript-declarations",
     "watch:all": "npm run watch & npm run watch:browser",
-    "build": "node build/main.js",
-    "watch": "node build/main.js -- watch",
-    "build:browser": "node build/browser.js",
-    "watch:browser": "node build/browser.js -- watch",
+    "build": "node _build/main.js",
+    "watch": "node _build/main.js -- watch",
+    "build:browser": "node _build/browser.js",
+    "watch:browser": "node _build/browser.js -- watch",
     "eslint": "eslint ./src/**",
     "typescript-declarations": "tsc --emitDeclarationOnly"
   },
