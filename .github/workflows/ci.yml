@@ -45,7 +45,7 @@ jobs:
 
       # 5. Собрать проект
       - name: Build project
-        run: npm run build
+        run: npm run build:all
 
       # 6. Публикация только при пуше в main
       - name: Publish to GitHub Packages
